@@ -9,9 +9,7 @@ logger = logging.getLogger(__name__)
 
 def main():
     url = "https://my.adminvps.ru/login"
-
     req = Request()
-
     print(req.check_url_head(url))
 
 
