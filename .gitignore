@@ -21,6 +21,7 @@ dist/
 *.local
 
 # Логи и файлы отчетов о тестировании
+log/
 *.log
 .pytest_cache/
 .coverage
