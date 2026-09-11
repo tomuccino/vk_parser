@@ -32,7 +32,12 @@ class TestUrlCheckReport(unittest.TestCase):
     def test_init_class(self):
         url_report = UrlCheckReport(self.urls_result)
 
+        available = sum(r['available'] for r in self.urls_result)
+        # [print(r) for r in self.urls_result]
+
         self.assertEqual(url_report.total, len(self.urls_result))
+        self.assertEqual(url_report.available, available)
+
 
 
 if __name__ == "__main__":

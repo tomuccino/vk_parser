@@ -26,7 +26,7 @@ class UrlCheckReport:
 
     @property
     def available(self) -> int:
-        return sum(r.available for r in self.results)
+        return sum(r["available"] for r in self.urls_result)
 
     @property
     def unavailable(self) -> int:
