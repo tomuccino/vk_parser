@@ -7,9 +7,11 @@ from utils.logger import dump_log
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class UrlCheckReport:
     """Итоговый отчет об опросе всех url"""
+
     urls_result: list[Dict]
     # total: int
     # available: int
@@ -17,7 +19,7 @@ class UrlCheckReport:
     # summary: str
 
     def __init__(self, urls_result: list[Dict]):
-        dump_log(logger, 'UrlCheckReport init', urls_result)
+        dump_log(logger, "UrlCheckReport init", urls_result)
         self.urls_result = urls_result
 
     @property
@@ -37,8 +39,8 @@ class UrlCheckReport:
         return f"Доступно {self.available}/{self.total}"
 
     def result(self) -> None:
-        for url in self.urls_result:
-            mark = "OK " if url.available else "FAIL"
-            print(f"[{mark}] {url.url} ({url.status_code or url.error})")
+        # for url in self.urls_result:
+        #     mark = "OK " if url.available else "FAIL"
+        #     print(f"[{mark}] {url.url} ({url.status_code or url.error})")
 
         print(self.summary)

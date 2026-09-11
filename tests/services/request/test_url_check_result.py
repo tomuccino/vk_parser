@@ -1,9 +1,9 @@
 import unittest
 
-from services.request.url_check_report import UrlCheckReport
+from services.request.url_ckeck_result import UrlCheckResult
 
 
-class TestUrlCheckReport(unittest.TestCase):
+class TestUrlCheckResult(unittest.TestCase):
     def setUp(self):
         # return super().setUp()
         self.urls_result = [
@@ -27,21 +27,12 @@ class TestUrlCheckReport(unittest.TestCase):
             },
         ]
 
-    def tearDown(self):
-        return super().tearDown()
-
     def test_init_class(self):
-        url_report = UrlCheckReport(self.urls_result)
+        for url in self.urls_result:
+            url_result = UrlCheckResult(**url)
 
-        available = sum(r["available"] for r in self.urls_result)
-        total = len(self.urls_result)
-        # [print(r) for r in self.urls_result]
-
-        self.assertEqual(url_report.total, total)
-        self.assertEqual(url_report.available, available)
-        self.assertEqual(url_report.unavailable, total - available)
-        self.assertEqual(url_report.summary, f"Доступно {available}/{total}")
-
-
-if __name__ == "__main__":
-    unittest.main()
+            mark = " OK " if url["available"] else "FAIL"
+            result_str = (
+                f"[ {mark} ] {url['url']} ({url['status_code'] or url['error']})"
+            )
+            self.assertEqual(str(url_result), result_str)
