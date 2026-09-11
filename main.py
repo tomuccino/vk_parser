@@ -1,7 +1,7 @@
 import logging
 
 from services.request.request import Request
-from logger import init_logger, dump_log, log_input, clear_dump_file
+from utils.logger import init_logger, dump_log, log_input, clear_dump_file
 
 init_logger()
 logger = logging.getLogger(__name__)
