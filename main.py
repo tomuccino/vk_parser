@@ -1,6 +1,6 @@
 import logging
 
-from request import Request
+from services.request.request import Request
 from logger import init_logger, dump_log, log_input, clear_dump_file
 
 init_logger()

@@ -26,6 +26,7 @@ class Request:
             return False
 
 
+
 def main():
     url = "https://my.adminvps.ru/login"
 
