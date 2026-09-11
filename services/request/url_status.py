@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
-class UrlCheckResult:
+class UrlStatus:
     """Результат проверки доступности одного url адреса"""
 
     url: str

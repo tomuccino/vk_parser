@@ -28,11 +28,8 @@ def main():
         for i in range(1, 31)
     }
 
-    dump_log(logger, 'test', data)
-    log_input(logger,'test', data)
-
-
-
+    # dump_log(logger, 'test', data)
+    # log_input(logger,'test', data)
 
 
 if __name__ == "__main__":

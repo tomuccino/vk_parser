@@ -1,9 +1,9 @@
 import unittest
 
-from services.request.url_check_report import UrlCheckReport
+from services.request.urls_check_report import UrlsCheckReport
 
 
-class TestUrlCheckReport(unittest.TestCase):
+class TestUrlsCheckReport(unittest.TestCase):
     def setUp(self):
         # return super().setUp()
         self.urls_result = [
@@ -31,7 +31,7 @@ class TestUrlCheckReport(unittest.TestCase):
         return super().tearDown()
 
     def test_init_class(self):
-        url_report = UrlCheckReport(self.urls_result)
+        url_report = UrlsCheckReport(self.urls_result)
 
         available = sum(r["available"] for r in self.urls_result)
         total = len(self.urls_result)

@@ -1,9 +1,9 @@
 import unittest
 
-from services.request.url_ckeck_result import UrlCheckResult
+from services.request.url_status import UrlStatus
 
 
-class TestUrlCheckResult(unittest.TestCase):
+class TestUrlStatus(unittest.TestCase):
     def setUp(self):
         # return super().setUp()
         self.urls_result = [
@@ -29,7 +29,7 @@ class TestUrlCheckResult(unittest.TestCase):
 
     def test_init_class(self):
         for url in self.urls_result:
-            url_result = UrlCheckResult(**url)
+            url_result = UrlStatus(**url)
 
             mark = " OK " if url["available"] else "FAIL"
             result_str = (

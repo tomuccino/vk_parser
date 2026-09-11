@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
-class UrlCheckReport:
+class UrlsCheckReport:
     """Итоговый отчет об опросе всех url"""
 
     urls_result: list[Dict]
@@ -42,5 +42,8 @@ class UrlCheckReport:
         # for url in self.urls_result:
         #     mark = "OK " if url.available else "FAIL"
         #     print(f"[{mark}] {url.url} ({url.status_code or url.error})")
+
+        for url in self.urls_result:
+            print()
 
         print(self.summary)
