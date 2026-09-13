@@ -1,12 +1,15 @@
 import unittest
 
+from services.request.url_status import UrlStatus
 from services.request.urls_check_report import UrlsCheckReport
 
 
 class TestUrlsCheckReport(unittest.TestCase):
     def setUp(self):
         # return super().setUp()
-        self.urls_result = [
+        self.urls_result = []
+
+        self.urls_status = [
             {
                 "url": "https://example.com",
                 "available": True,
@@ -27,13 +30,16 @@ class TestUrlsCheckReport(unittest.TestCase):
             },
         ]
 
+        for url in self.urls_status:
+            self.urls_result.append(UrlStatus(**url))
+
     def tearDown(self):
         return super().tearDown()
 
     def test_init_class(self):
         url_report = UrlsCheckReport(self.urls_result)
 
-        available = sum(r["available"] for r in self.urls_result)
+        available = sum(r.available for r in self.urls_result)
         total = len(self.urls_result)
         # [print(r) for r in self.urls_result]
 
