@@ -1,6 +1,6 @@
 import logging
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict
 from services.request.url_status import UrlStatus
 from utils.logger import dump_log
@@ -13,16 +13,15 @@ class UrlsCheckReport:
     """Итоговый отчет об опросе всех url"""
 
     # urls_result: list[Dict]
-    urls_result: list[UrlStatus]
+    urls_result: list[UrlStatus] = field(default_factory=list)
 
     # total: int
     # available: int
     # unavailable: int
     # summary: str
 
-    def __init__(self, urls_result: list[Dict]):
-        dump_log(logger, "UrlCheckReport init", urls_result)
-        self.urls_result = urls_result
+    def __post_init__(self):
+        dump_log(logger, "UrlCheckReport init", self.urls_result)
 
     @property
     def total(self) -> int:
