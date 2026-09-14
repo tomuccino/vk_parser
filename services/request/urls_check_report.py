@@ -10,9 +10,21 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class UrlsCheckReport:
-    """Итоговый отчет об опросе всех url"""
+    """Итоговый отчет об опросе всех url
 
-    # urls_result: list[Dict]
+        Attributes:
+
+            urls_result: list = [
+                {
+                    url: str
+                    available: bool
+                    status_code: int | None = None
+                    error: str | None = None
+                },
+            ]
+            full_report: str
+    """
+
     urls_result: list[UrlStatus] = field(default_factory=list)
 
     # total: int
@@ -39,12 +51,16 @@ class UrlsCheckReport:
     def summary(self) -> str:
         return f"Доступно {self.available}/{self.total}"
 
-    def result(self) -> None:
-        # for url in self.urls_result:
-        #     mark = "OK " if url.available else "FAIL"
-        #     print(f"[{mark}] {url.url} ({url.status_code or url.error})")
+    @property
+    def result(self) -> str:
+        return "\n".join(str(url) for url in self.urls_result)
 
-        for url in self.urls_result:
-            pass
+    @property
+    def full_report(self) -> str:
+        return (
+            "=== Полный отчет о проверке адресов ===\n"
+            "\n"
+            f"{self.result}\n"
+            f"{self.summary}"
+        )
 
-        print(self.summary)

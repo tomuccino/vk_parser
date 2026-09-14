@@ -16,7 +16,7 @@ class Request:
     session: requests.Session = field(default_factory=requests.Session)
 
     def check_url_head(self, url) -> UrlStatus:
-        logger.debug("check url %s", url)
+        logger.debug("Request check_url %s", url)
         try:
             response = self.session.head(
                 url, timeout=self.timeout, allow_redirects=self.allow_redirects

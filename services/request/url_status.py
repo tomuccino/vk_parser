@@ -7,7 +7,14 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class UrlStatus:
-    """Результат проверки доступности одного url адреса"""
+    """Результат проверки доступности одного url адреса
+
+        Attributes:
+            url: str
+            available: bool
+            status_code: int | None = None
+            error: str | None = None
+    """
 
     url: str
     available: bool

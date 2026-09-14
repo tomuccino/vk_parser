@@ -18,7 +18,10 @@ def main():
 
     try:
         for url in URLS:
-            urls_report.urls_result.append(request.check_url_head(url))
+            checked_url = request.check_url_head(url)
+            # print(checked_url)
+            urls_report.urls_result.append(checked_url)
+        print(urls_report.full_report)
     finally:
         request.session.close()
 
