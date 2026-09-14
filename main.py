@@ -18,21 +18,26 @@ def check_urls(request: Request, report: UrlsCheckReport) -> None:
             checked_url = request.check_url_head(url)
             # report.append(checked_url)
             report.urls_result.append(checked_url)
+
+        available_urls = [url for url in report.urls_result if url.status_code == 200]
+
+        print(available_urls)
+
     finally:
         request.session.close()
 
+    # return ???
     print(report.full_report)
+    print(available_urls)
+
 
 
 def parse_urls(parser: Parser) -> None:
     """Парсинг данных со страниц."""
-    for url in URLS:
-        try:
-            data = parser.request(url)
-            data_parser = DataParser(data)
-            data_parser.get_data()
-        except Exception as e:
-            logger.exception(f"Ошибка при парсинге {url}: {e}")
+        # data = parser.request(url)
+        # data_parser = DataParser(data)
+        # data_parser.get_data()
+        # logger.exception(f"Ошибка при парсинге {url}: {e}")
 
 
 def main():
@@ -44,7 +49,7 @@ def main():
     check_urls(request, urls_report)
 
     parser = Parser()
-    parse_urls(parser)
+    # parse_urls(parser)
 
 
 if __name__ == "__main__":
