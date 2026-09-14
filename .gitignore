@@ -26,6 +26,7 @@ log/
 .pytest_cache/
 .coverage
 htmlcov/
+testo.py
 
 # Настройки вашей IDE (если вы используете, например, PyCharm или VS Code)
 .vscode/
